@@ -1,5 +1,7 @@
-<?php require_once('view/top.php') ?>
-<div class="wrapper">
+<?php require_once($_SERVER["DOCUMENT_ROOT"].'/common/top.php'); ?>
+
+<div class="list wrapper">
+    <a class="btn" href="topic/write.php">글쓰기</a>
     <table>
         <thead>
             <th></th>
@@ -15,5 +17,6 @@
         </tbody>
     </table>
 </div>
-<?php require_once('view/bottom.php') ?>
+
+<?php require_once($_SERVER["DOCUMENT_ROOT"].'/common/bottom.php'); ?>
     
