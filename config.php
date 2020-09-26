@@ -1,0 +1,3 @@
+<?php
+$GLOBALS['date'] = time();
+?>
