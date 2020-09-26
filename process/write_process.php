@@ -6,9 +6,9 @@ $mysql = new mysql;
 $result = $mysql->query("
     INSERT INTO board_table(title,content,date)
     VALUES (?,?,?);
-",[$_POST['title'],$_POST['content'],$GLOBALS['date']]);
+",[$_POST['title'],$_POST['content'],time()]);
 
 if($result) {
-    Header("Location:topic/article.php?id={$result}"); 
+    echo("<script>location.replace('/topic/article.php?id={$result}');</script>"); 
 }
 ?>

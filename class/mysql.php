@@ -24,9 +24,7 @@ class mysql{
         $result = mysqli_query($this->conn,$query);
         if ($result) {
             if(gettype($result) == 'boolean') {
-                $id = mysql_insert_id();
-                var_dump($id);
-                exit;
+                $id = mysqli_insert_id($this->conn);
                 return $id;
             }else {
                 return $result;
