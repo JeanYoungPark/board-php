@@ -1,7 +1,7 @@
 <?php require_once($_SERVER["DOCUMENT_ROOT"].'/common/top.php'); ?>
 
 <div class="list wrapper">
-    <a class="btn" href="topic/write.php">글쓰기</a>
+    <a class="btn" href="topic/write.php">글쓰기 test</a>
     <table>
         <thead>
             <th></th>
