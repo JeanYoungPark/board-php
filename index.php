@@ -21,6 +21,7 @@ foreach($row as $key => $value) {
 }
 
 $body =<<<JYP
+<div class="container">
     <div class="col-lg-12">
     <a type="button" class="btn btn-default" href="topic/write.php">글쓰기</a>
     <table class="table">
@@ -34,6 +35,7 @@ $body =<<<JYP
         </tbody>
     </table>
     </div>
+</div>
 JYP;
 
 $html = new html($body);

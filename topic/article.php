@@ -8,7 +8,7 @@ $result = $mysql->query("SELECT * FROM board_table WHERE id=?",[$_GET['id']]);
 $row = mysqli_fetch_assoc($result);
 
 $body = <<<JYP
-    <div>
+    <div class="container">
        <div>{$row['title']}</div>
        <div>{$row['content']}</div>
     </div>
