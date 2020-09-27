@@ -10,7 +10,7 @@ $row = mysqli_fetch_all($result);
 $list  = '';
 foreach($row as $key => $value) {
     $num = $key+1;
-    $date = date("Y-m-d H:i", $value[3]);
+    $date = date("Y-m-d H:i", $value[4]);
     $list .= "
         <tr>
             <td>{$num}</td>

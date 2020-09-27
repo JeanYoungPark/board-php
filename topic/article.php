@@ -9,8 +9,12 @@ $row = mysqli_fetch_assoc($result);
 
 $body = <<<JYP
     <div class="container">
-       <div>{$row['title']}</div>
-       <div>{$row['content']}</div>
+        <a class="btn btn-default glyphicon glyphicon-home" href="/"> 홈</a>
+        <div>
+            <p class="lead">{$row['title']}</p>
+            <p class="">{$row['content']}</p>
+            <em>by.{$row['writer']}</em>
+        </div>
     </div>
 JYP;
 
