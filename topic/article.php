@@ -3,10 +3,15 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/mysql.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
+//call datas for article
 $mysql = new mysql;
 $result = $mysql->query("SELECT * FROM board_table WHERE id=?",[$_GET['id']]);
 $row = mysqli_fetch_assoc($result);
 $date = date('Y.m.d H:i',$row['date']);
+
+$row['content'] = htmlspecialchars_decode($row['content']);
+$_POST['content'] = str_replace('\rn','\n',$_POST['content']);
+var_dump($row['content']);
 
 $before_query = "SELECT id FROM board_table
                         WHERE id < ?
@@ -17,6 +22,7 @@ $next_query = "SELECT id FROM board_table
                          AND date >= ?
                        LIMIT 1";
 
+//call ids for pages
 $result = $mysql->query($before_query, [$row['id'],$row['date']]);
 $before = mysqli_fetch_assoc($result);
 
@@ -28,6 +34,7 @@ if($before) $btn = "<span class='before'><a href='/topic/article.php?id={$before
 if($next) $btn .= "<span class='next'><a href='/topic/article.php?id={$next['id']}'>다음글<em class='glyphicon glyphicon-chevron-right'></em></a></span>";
 
 $body = <<<JYP
+    <script>var data = '{$row['content']}';</script>
     <div class="container">
         <a class="btn btn-default" type="button" href="/"><em class="glyphicon glyphicon-home"></em>홈</a>
         <div class="content-top clearfix">
@@ -46,7 +53,7 @@ $body = <<<JYP
                 </div>
             </div>
         </div>
-        <div class="content-bottom"><p>{$row['content']}</p></div>
+        <div class="content-bottom"><p></p></div>
         <div class="pages-btn">{$btn}</div>
     </div>
 JYP;

@@ -14,8 +14,11 @@ class mysql{
         if(!empty($values)) {
             if(count($values) == substr_count($query,'?')) {
                 for($i = 0;$i < count($values);$i++){
-                    $values[$i] = mysqli_real_escape_string($this->conn,$values[$i]);
+                    if(gettype($values[$i]) == "string") {
+                        $values[$i] = mysqli_real_escape_string($this->conn,$values[$i]);
+                    }
                     $query = preg_replace('/\?/',"'".$values[$i]."'",$query,1);
+                    
                 }
             }
         }

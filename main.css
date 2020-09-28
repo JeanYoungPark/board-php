@@ -1,8 +1,9 @@
 p {font-size:16px;}
-.container {padding-top:20px;}
+.container,.form-container {padding-top:20px;}
 .content-top {border-bottom:1px solid rgba(0,0,0,.1);}
 .content-top h1 {text-align:center;padding:50px 0;}
 .content-top .date {margin-left:10px;color:#777;}
 .content-top .modify {margin-right:10px;}
 .content-bottom{min-height:500px;padding:30px 0;}
 .pages-btn {text-align:center;}
+#editor {min-height:500px;}
