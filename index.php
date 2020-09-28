@@ -23,7 +23,7 @@ while($row = mysqli_fetch_array($result)){
 
 $body =<<<JYP
 <div class="container">
-    <div class="col-lg-12">
+    <div class="">
     <a type="button" class="btn btn-default" href="topic/write.php">글쓰기</a>
     <table class="table">
         <thead>
