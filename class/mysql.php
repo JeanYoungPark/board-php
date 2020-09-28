@@ -11,8 +11,6 @@ class mysql{
     public function query($query ,$values=[]){
         require_once($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
-        $value;
-
         if(!empty($values)) {
             if(count($values) == substr_count($query,'?')) {
                 for($i = 0;$i < count($values);$i++){
