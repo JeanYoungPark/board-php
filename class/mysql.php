@@ -2,6 +2,7 @@
 
 class mysql{
     private $conn;
+    
     function __construct(){
         require_once($_SERVER['DOCUMENT_ROOT'].'/info.php');
         $this->conn = new mysqli($host, $user, $password, $database_name);

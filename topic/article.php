@@ -10,10 +10,13 @@ $row = mysqli_fetch_assoc($result);
 $body = <<<JYP
     <div class="container">
         <a class="btn btn-default glyphicon glyphicon-home" href="/"> 홈</a>
-        <div>
+        <div class="col-lg-10">
             <p class="lead">{$row['title']}</p>
             <p class="">{$row['content']}</p>
-            <em>by.{$row['writer']}</em>
+        </div>
+        <div class="col-lg-10">
+            <p><em>작성일 {$row['date']}</em></p>
+            <p><em>by.{$row['writer']}</em></p>
         </div>
     </div>
 JYP;

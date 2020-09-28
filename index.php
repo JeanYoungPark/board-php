@@ -5,19 +5,20 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
 $mysql = new mysql;
 $result = $mysql->query("SELECT * FROM board_table ORDER BY date DESC");
-$row = mysqli_fetch_all($result);
+// $row = mysqli_fetch_array($result);
 
 $list  = '';
-foreach($row as $key => $value) {
-    $num = $key+1;
-    $date = date("Y-m-d H:i", $value[4]);
+$num = 1;
+while($row = mysqli_fetch_array($result)){
+    $date = date("Y-m-d H:i", $row['date']);
     $list .= "
         <tr>
             <td>{$num}</td>
-            <td><a href='/topic/article.php?id={$value[0]}'>{$value[1]}</a></td>
+            <td><a href='/topic/article.php?id={$row['id']}'>{$row['title']}</a></td>
             <td>{$date}</td>
         </tr>
     ";
+    $num++;
 }
 
 $body =<<<JYP
