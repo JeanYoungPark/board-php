@@ -15,11 +15,11 @@ class mysql{
             if(count($values) == substr_count($query,'?')) {
                 for($i = 0;$i < count($values);$i++){
                     if(gettype($values[$i]) == "string") {
-                        $values[$i] = mysqli_real_escape_string($this->conn,$values[$i]);
+                        $values[$i] = "'".strip_tags($values[$i])."'";
                     }
-                    $query = preg_replace('/\?/',"'".$values[$i]."'",$query,1);
-                    
+                    $query = preg_replace('/\?/',$values[$i],$query,1);   
                 }
+                $query = str_replace('\n','\\\n',$query);   
             }
         }
 

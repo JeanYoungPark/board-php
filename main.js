@@ -29,9 +29,9 @@ var options = {
     theme: 'snow'
   };
 
-if(container) {
-    var editor = new Quill(container, options);
-}
+// if(container) {
+//     var editor = new Quill(container, options);
+// }
 
 /*-------------------form control--------------------*/
 var form = document.getElementById('write_form');
@@ -40,6 +40,10 @@ var title = document.getElementById('title');
 var val;
 
 if(form) {
+    if(container) {
+        var editor = new Quill(container, options);
+    }
+
     form.onsubmit = function a(){
         val = document.getElementsByClassName('ql-editor');
         var content_text = val[0].innerHTML;
@@ -56,4 +60,12 @@ if(form) {
         content.value = JSON.stringify(editor.getContents().ops);
         title.value = title_text;
     }
+}
+
+if(json_data) {
+    if(container) {
+        var editor = new Quill(container);
+    }
+    console.log(JSON_parse(json_data));
+    // editor.setContents();
 }

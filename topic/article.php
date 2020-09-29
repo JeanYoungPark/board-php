@@ -8,11 +8,9 @@ $mysql = new mysql;
 $result = $mysql->query("SELECT * FROM board_table WHERE id=?",[$_GET['id']]);
 $row = mysqli_fetch_assoc($result);
 $date = date('Y.m.d H:i',$row['date']);
-
-$row['content'] = htmlspecialchars_decode($row['content']);
-$_POST['content'] = str_replace('\rn','\n',$_POST['content']);
-var_dump($row['content']);
-
+//여기부터
+// $row['content'] = str_replace('\n','\\\n',$row['content']);
+echo ($row['content']);
 $before_query = "SELECT id FROM board_table
                         WHERE id < ?
                           AND date <= ?
@@ -34,7 +32,7 @@ if($before) $btn = "<span class='before'><a href='/topic/article.php?id={$before
 if($next) $btn .= "<span class='next'><a href='/topic/article.php?id={$next['id']}'>다음글<em class='glyphicon glyphicon-chevron-right'></em></a></span>";
 
 $body = <<<JYP
-    <script>var data = '{$row['content']}';</script>
+    <script>var json_data = '{$row['content']}';</script>
     <div class="container">
         <a class="btn btn-default" type="button" href="/"><em class="glyphicon glyphicon-home"></em>홈</a>
         <div class="content-top clearfix">
@@ -53,7 +51,7 @@ $body = <<<JYP
                 </div>
             </div>
         </div>
-        <div class="content-bottom"><p></p></div>
+        <div id="editor" class="content-bottom"></div>
         <div class="pages-btn">{$btn}</div>
     </div>
 JYP;
