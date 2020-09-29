@@ -9,10 +9,8 @@ $body =<<<JYP
                 <input id="title" class="form-control" name="title" type="text" placeholder="제목">
             </div>
             <div class="form-group">
-                <div id="toolbar"></div>
-                <div id="editor"></div>
+                <textarea class="content-bottom form-control" name="content" placeholder="내용을 입력하세요"></textarea>
             </div>
-            <input id="content" name="content" type="hidden">
             <input class="btn btn-default" type="submit" value="저장">
         </form>
     </div>
