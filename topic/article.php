@@ -2,20 +2,24 @@
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/mysql.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
+$mysql = new mysql;
 
 //call datas for article
-$mysql = new mysql;
+$_GET['id'] = $mysql->mysqli_chk($_GET['id']);
+
 $result = $mysql->query("SELECT * FROM board_table WHERE id={$_GET['id']}");
 $row = mysqli_fetch_assoc($result);
-$date = date('Y.m.d H:i',$row['date']);
+$row['title'] = nl2br(htmlspecialchars($row['title']));
+$row['content'] = nl2br(htmlspecialchars($row['content']));
+$row['writer'] = htmlspecialchars($row['writer']);
 
 $before_query = "SELECT id FROM board_table
                         WHERE id < {$row['id']}
-                          AND date <= {$row['date']}
+                          AND date <= '{$row['date']}'
                      ORDER BY id DESC LIMIT 1";
 $next_query = "SELECT id FROM board_table
                        WHERE id > {$row['id']}
-                         AND date >= {$row['date']}
+                         AND date >= '{$row['date']}'
                        LIMIT 1";
 
 //call ids for pages
@@ -37,11 +41,11 @@ $body = <<<JYP
             <div class="clearfix">
                 <p class="pull-left">
                     <span>작성자.{$row['writer']}</span>
-                    <span class="date">{$date}</span>
+                    <span class="date">{$row['date']}</span>
                 </p>
                 <div class="clearfix pull-right">
                     <a class="modify pull-left btn btn-default btn-sm" href="/topic/modify.php?id={$row['id']}">수정</a>
-                    <form class="delete pull-left" action="/topic/delete_process.php" method="post">
+                    <form class="pull-left" action="/process/delete_process.php" method="post" onsubmit="return askDelete()">
                         <input type="hidden" name="id" value="{$row['id']}">
                         <input class="btn btn-default btn-sm" type="submit" value="삭제">
                     </form>

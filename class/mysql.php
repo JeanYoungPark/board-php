@@ -8,25 +8,26 @@ class mysql{
         $this->conn = new mysqli($host, $user, $password, $database_name);
     }
 
+    //injection chk
+    public function mysqli_chk($value){
+        
+        if(is_array($value)) {
+            $arr = array();
+            foreach($value as $key => $val){
+                $arr[$key] = mysqli_real_escape_string($this->conn,$val);
+            }
+            return $arr;
+        }else {
+            $value = mysqli_real_escape_string($this->conn, $value);
+            return $value;
+        }
+    }
+
     public function query($query){
         require_once($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
-        // if(!empty($values)) {
-        //     if(count($values) == substr_count($query,'?')) {
-        //         for($i = 0;$i < count($values);$i++){
-        //             if(gettype($values[$i]) == "string") {
-        //                 $values[$i] = '"'.strip_tags($values[$i]).'"';
-        //             }
-        //             $query = preg_replace('/\?/',$values[$i],$query,1);  
-        //             var_dump($query);
-        //             echo('<br><br>'); 
-        //         }
-        //         $query = str_replace('\n','\\\n',$query);
-        //         exit;
-        //     }
-        // }
-
         $result = mysqli_query($this->conn,$query);
+
         if ($result) {
             if(gettype($result) == 'boolean') {
                 $id = mysqli_insert_id($this->conn);

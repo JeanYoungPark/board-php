@@ -1,16 +1,12 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/config.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/class/mysql.php');
-
-$_POST['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'UTF-8');
-$_POST['content'] = htmlspecialchars($_POST['content'], ENT_QUOTES, 'UTF-8');
-
-$query = <<<JYP
-INSERT INTO board_table(title,content,date)
-VALUES ('{$_POST['title']}','{$_POST['content']}',{$GLOBALS['time']});
-JYP;
 $mysql = new mysql;
-$result = $mysql->query($query);
+
+$_POST['title'] = $mysql->mysqli_chk($_POST['title']);
+$_POST['content'] = $mysql->mysqli_chk($_POST['content']);
+
+$result = $mysql->query("INSERT INTO board_table (title,content) VALUES ('{$_POST['title']}','{$_POST['content']}')") ;
 
 if($result) {
     echo("<script>location.replace('/topic/article.php?id={$result}');</script>"); 

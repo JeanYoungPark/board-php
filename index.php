@@ -2,20 +2,19 @@
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/mysql.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
-
 $mysql = new mysql;
+
 $result = $mysql->query("SELECT * FROM board_table ORDER BY date DESC");
-// $row = mysqli_fetch_array($result);
 
 $list  = '';
 $num = 1;
 while($row = mysqli_fetch_array($result)){
-    $date = date("Y-m-d H:i", $row['date']);
+    $row['title'] = htmlspecialchars($row['title']);
     $list .= "
         <tr>
             <td>{$num}</td>
             <td><a href='/topic/article.php?id={$row['id']}'>{$row['title']}</a></td>
-            <td>{$date}</td>
+            <td>{$row['date']}</td>
         </tr>
     ";
     $num++;
