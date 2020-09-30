@@ -33,7 +33,6 @@ if($next) $btn .= "<span class='next'><a href='/topic/article.php?id={$next['id'
 
 $body = <<<JYP
     <div class="container">
-        <a class="btn btn-default" type="button" href="/"><em class="glyphicon glyphicon-home"></em>홈</a>
         <div class="content-top clearfix">
             <h1>{$row['title']}</h1>
             <div class="clearfix">
