@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
-require_once($_SERVER["DOCUMENT_ROOT"].'/class/mysql.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
-$mysql = new mysql;
 
 //call datas for article
 $_GET['id'] = $mysql->mysqli_chk($_GET['id']);

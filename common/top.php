@@ -12,6 +12,7 @@
 <body>
 <div class="header container-fluid">
     <div class="container clearfix">
+        <a class="btn btn-default" type="button" href="/"><em class="glyphicon glyphicon-home"></em>홈</a>
         <div class="pull-right">
             <a class="btn btn btn-default" href="/auth/login.php">로그인</a>
             <a class="btn btn-info" href="/auth/join.php">회원가입</a>

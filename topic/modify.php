@@ -1,8 +1,6 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
-require_once($_SERVER["DOCUMENT_ROOT"].'/class/mysql.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
-$mysql = new mysql;
 
 $result = $mysql->query("SELECT * FROM board_table WHERE id={$_GET['id']}");
 $row = mysqli_fetch_assoc($result);
@@ -11,7 +9,6 @@ $row['content'] = htmlspecialchars($row['content']);
 
 $body =<<<JYP
 <div class="container">
-    <p><a class="btn btn-default" type="button" href="/"><em class="glyphicon glyphicon-home"></em>홈</a></p>
     <div class="form-container">
         <form id="write_form" action="/process/modify_process.php" method="post">
             <div class="form-group">
