@@ -10,3 +10,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="header container-fluid">
+    <div class="container clearfix">
+        <div class="pull-right">
+            <a class="btn btn btn-default" href="/auth/login.php">로그인</a>
+            <a class="btn btn-info" href="/auth/join.php">회원가입</a>
+        </div>
+    </div>
+</div>
