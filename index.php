@@ -4,7 +4,7 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
 $result = $mysql->query("SELECT * FROM board_table ORDER BY date DESC");
 
-$list  = '';
+$list  = $btn = '';
 $num = 1;
 while($row = mysqli_fetch_array($result)){
     $row['title'] = htmlspecialchars($row['title']);
@@ -18,10 +18,13 @@ while($row = mysqli_fetch_array($result)){
     $num++;
 }
 
+if($GLOBALS['user_id']) {
+    $btn = '<a type="button" class="btn btn-default" href="topic/write.php">글쓰기</a>';
+}
 $body =<<<JYP
 <div class="container">
     <div class="">
-    <a type="button" class="btn btn-default" href="topic/write.php">글쓰기</a>
+    {$btn}
     <table class="table">
         <thead>
             <th></th>

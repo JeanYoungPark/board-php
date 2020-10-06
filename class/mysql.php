@@ -24,8 +24,6 @@ class mysql{
     }
 
     public function query($query){
-        require_once($_SERVER['DOCUMENT_ROOT'].'/config.php');
-
         $result = mysqli_query($this->conn,$query);
 
         if ($result) {

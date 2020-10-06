@@ -1,3 +1,18 @@
+<?php
+require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
+
+if($GLOBALS['user_id']) {
+    $btn = <<<JYP
+    <a class="btn btn btn-default" href="/auth/logout.php">로그아웃</a>
+    JYP;
+}else {
+    $btn = <<<JYP
+    <a class="btn btn btn-default" href="/auth/login.php">로그인</a>
+    <a class="btn btn-info" href="/auth/join.php">회원가입</a>
+    JYP;
+}
+
+$html = <<<JYP
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +29,11 @@
     <div class="container clearfix">
         <a class="btn btn-default" type="button" href="/"><em class="glyphicon glyphicon-home"></em>홈</a>
         <div class="pull-right">
-            <a class="btn btn btn-default" href="/auth/login.php">로그인</a>
-            <a class="btn btn-info" href="/auth/join.php">회원가입</a>
+            {$btn}
         </div>
     </div>
 </div>
+JYP;
+
+echo $html;
+?>
