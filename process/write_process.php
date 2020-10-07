@@ -2,10 +2,9 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/config.php');
 
 if($GLOBALS['user_id']) {
-    $_POST['title'] = $mysql->mysqli_chk($_POST['title']);
-    $_POST['content'] = $mysql->mysqli_chk($_POST['content']);
+    $arr = $mysql->mysqli_chk(['title'=>$_POST['title'],'content'=>$_POST['content']]);
 
-    $result = $mysql->query("INSERT INTO board_table (title,content) VALUES ('{$_POST['title']}','{$_POST['content']}')");
+    $result = $mysql->query("INSERT INTO board_table (title,content,writer) VALUES ('{$arr['title']}','{$arr['content']}','{$GLOBALS['user_id']}')");
 
     if($result) {
         echo("<script>location.replace('/topic/article.php?id={$result}');</script>"); 

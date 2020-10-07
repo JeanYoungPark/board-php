@@ -10,11 +10,14 @@ if($_COOKIE["PHPSESSID"]) {
 
         if(!$user){
             //session_db에 기록된 PHPSESSID의 id가 존재하지 않는 아이디일 경우
-            session_destroy();
+            unset($_COOKIE["PHPSESSID"]);
+        }else {
+            $GLOBALS['user_id'] = $user['id'];
+            $GLOBALS['user_nick_name'] = $user['nick_name'];
         }
     }else {
         //PHPSESSID이 기록이 없다면 로그인한 기록이 없는 것
-        session_destroy();
+        unset($_COOKIE["PHPSESSID"]);
     }
 }
 ?>

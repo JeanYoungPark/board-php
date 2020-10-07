@@ -3,7 +3,7 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 
 if($GLOBALS['user_id']) {
     $btn = <<<JYP
-    <a class="btn btn btn-default" href="/auth/logout.php">로그아웃</a>
+    <a class="btn btn btn-default" href="/process/logout_process.php">로그아웃</a>
     JYP;
 }else {
     $btn = <<<JYP
