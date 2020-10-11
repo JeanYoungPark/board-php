@@ -34,6 +34,7 @@ if($next) $pg_btn .= "<span class='next'><a href='/topic/article.php?id={$next['
 //본인 글일 경우 수정 삭제 가능
 if($GLOBALS['user_id'] == $row['writer']) {
     $btn = <<<JYP
+    <a type="button" class="btn btn-default" href="/topic/write.php">글쓰기</a>
     <a class="modify pull-left btn btn-default btn-sm" href="/topic/modify.php?id={$row['id']}">수정</a>
     <form class="pull-left" action="/process/delete_process.php" method="post" onsubmit="return askDelete()">
         <input type="hidden" name="id" value="{$row['id']}">
