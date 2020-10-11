@@ -3,6 +3,13 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
 $result = $mysql->query("SELECT * FROM board_table ORDER BY date DESC");
+$pg_cnt = mysqli_num_rows($result);
+$pg_cnt = ceil($pg_cnt/10);
+$pg_html = '';
+
+for($i=1;$i < $pg_cnt+1;$i++){
+    $pg_html .= "<a href='?pg={$i}'>{$i}</a>";
+}
 
 $list  = $btn = '';
 $num = 1;
@@ -35,6 +42,7 @@ $body =<<<JYP
             {$list}
         </tbody>
     </table>
+    <p>{$pg_html}</p>
     </div>
 </div>
 JYP;
