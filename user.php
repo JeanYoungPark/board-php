@@ -1,5 +1,5 @@
 <?php
-if($_COOKIE["PHPSESSID"]) {
+if(!empty($_COOKIE["PHPSESSID"])) {
     $_COOKIE["PHPSESSID"] = $mysql->mysqli_chk($_COOKIE["PHPSESSID"]);
     $result = $mysql->query("SELECT * FROM session_db WHERE session='{$_COOKIE["PHPSESSID"]}'");
     $row = mysqli_fetch_assoc($result);
