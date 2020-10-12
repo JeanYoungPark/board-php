@@ -43,6 +43,21 @@ if($GLOBALS['user_id'] == $row['writer']) {
     JYP;
 }
 
+if($GLOBALS['user_id']) {
+    $comment = <<<JYP
+    <form id="comment">
+        <input type="text" value="댓글을 입력하세요."></input>
+        <input type="hiddne" relation_table="">
+        <input type="hiddne" relation_id="">
+        <input type="submit" value="댓글저장">
+    </form>
+    JYP;
+}else {
+    $comment = <<<JYP
+    <div>회원가입 후 댓글쓰기가 가능합니다.</div>
+    JYP;
+}
+
 $body = <<<JYP
     <div class="container">
         <div class="content-top clearfix">
@@ -59,6 +74,7 @@ $body = <<<JYP
         </div>
         <div id="editor" class="content-bottom">{$row['content']}</div>
         <div class="pages-btn">{$pg_btn}</div>
+        {$comment}
     </div>
 JYP;
 
