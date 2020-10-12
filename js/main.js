@@ -25,3 +25,19 @@ $('#join_form input').on('focusout',function(){
         else me.siblings('.warn').text('');
     });
 });
+
+$('#pgNumBtn span').on('click',function(){
+    if($(this).attr('pg')) {
+        $.ajax({
+            url:"/",
+            type:'get',
+            data:{pg:$(this).attr('pg')},
+            datatype:'html'
+        }).done(function(data){
+            var htmlData = $(data).find('.tbody').html();
+            var pgBtnData = $(data).find('#pgNumBtn').html();
+            $('.tbody').html(htmlData);
+            $('#pgNumBtn').html(pgBtnData);
+        });
+    }
+});

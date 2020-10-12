@@ -9,3 +9,6 @@
 .pages-btn {text-align:center;}
 #editor {min-height:500px;}
 .warn {color:red;}
+#pgNumBtn {text-align:center;margin-top:20px;}
+#pgNumBtn .black {cursor:pointer; padding-right:20px;}
+#pgNumBtn .red {font-weight: bold;color:red;padding-right:20px;}
