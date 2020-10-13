@@ -1,14 +1,15 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 
-if($GLOBALS['user_id']) {
+if(isset($GLOBALS['user'])) {
     $btn = <<<JYP
+    <a class="btn btn btn-default" href="/mypage/articles.php">마이페이지</a>
     <a class="btn btn btn-default" href="/process/logout_process.php">로그아웃</a>
     JYP;
 }else {
     $btn = <<<JYP
-    <a class="btn btn btn-default" href="/auth/login.php">로그인</a>
-    <a class="btn btn-info" href="/auth/join.php">회원가입</a>
+    <a class="btn btn btn-default" href="/users/login.php">로그인</a>
+    <a class="btn btn-info" href="/users/join.php">회원가입</a>
     JYP;
 }
 

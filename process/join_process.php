@@ -52,7 +52,7 @@ if($ajax) {
         $result = $mysql->query("INSERT INTO auth (id,password,nick_name) VALUES('{$arr['id']}','{$arr['password']}','{$arr['nick_name']}')");
         
         if($result) {
-            echo("<script>alert('회원가입을 축하합니다!'); location.replace('/auth/login.php');</script>"); 
+            echo("<script>alert('회원가입을 축하합니다!'); location.replace('/users/login.php');</script>"); 
         }
     }
 }

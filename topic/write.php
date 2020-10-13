@@ -2,7 +2,7 @@
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
-if($GLOBALS['user_id']) {
+if(isset($GLOBALS['user'])) {
     $body =<<<JYP
     <div class="container">
         <div class="form-container">
@@ -21,7 +21,7 @@ if($GLOBALS['user_id']) {
 
     $html = new html($body);
 }else {
-    echo("<script>alert('로그인 후 글쓰기가 가능합니다.');location.replace('/auth/login.php');</script>"); 
+    echo("<script>alert('로그인 후 글쓰기가 가능합니다.');location.replace('/users/login.php');</script>"); 
 }
 
 ?>

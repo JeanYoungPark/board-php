@@ -7,7 +7,7 @@ $_POST['id'] = $mysql->mysqli_chk($_POST['id']);
 $result = $mysql->query("SELECT * FROM board_table WHERE id={$_POST['id']}");
 $row = mysqli_fetch_assoc($result);
 
-if($GLOBALS['user_id'] == $row['writer']) {
+if($GLOBALS['user']['id'] == $row['writer_id']) {
     $result = $mysql->query("DELETE FROM board_table WHERE id = {$_POST['id']}");
     if($result) {
         echo("<script>location.replace('/');</script>"); 

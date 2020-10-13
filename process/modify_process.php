@@ -7,7 +7,7 @@ $arr = $mysql->mysqli_chk(['id'=>$_POST['id'],'title'=>$_POST['title'],'content'
 $result = $mysql->query("SELECT * FROM board_table WHERE id={$arr['id']}");
 $row = mysqli_fetch_assoc($result);
 
-if($GLOBALS['user_id'] == $row['writer']) {
+if($GLOBALS['user']['id'] == $row['writer_id']) {
     $result = $mysql->query("UPDATE board_table SET title = '{$arr['title']}', content = '{$arr['content']}' WHERE id = '{$arr['id']}'");
     if($result) {
         echo("<script>location.replace('/topic/article.php?id={$_POST['id']}');</script>"); 

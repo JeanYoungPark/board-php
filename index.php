@@ -2,16 +2,18 @@
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
+//목록 페이지번호, 보여줄 리스트 정의
 $get_pg = isset($_GET['pg'])?$_GET['pg']:1;
-
 $pg_start = ($get_pg - 1) * 10;
 $pg_last = $pg_start + 10;
 
+//게시글 갯수
 $result = $mysql->query("SELECT * FROM board_table ORDER BY date DESC");
 $pg_cnt = mysqli_num_rows($result);
 $pg_cnt = ceil($pg_cnt/10);
 $pg_html = '';
 
+//2페이지가 넘어갈 때
 if($pg_cnt > 1) {
     for($i=1;$i < $pg_cnt + 1;$i++){
         if($get_pg != $i) {
@@ -20,10 +22,11 @@ if($pg_cnt > 1) {
     }
 }
 
+
 $result = $mysql->query("SELECT * FROM board_table ORDER BY date DESC LIMIT {$pg_start},{$pg_last}");
 
 $list  = $btn = '';
-$num = ($get_pg - 1) * 10 + 1;
+$num = ($get_pg - 1) * 10 + 1; //시작번호
 while($row = mysqli_fetch_array($result)){
     $row['title'] = htmlspecialchars($row['title']);
     $list .= "
@@ -36,9 +39,10 @@ while($row = mysqli_fetch_array($result)){
     $num++;
 }
 
-if($GLOBALS['user_id']) {
+if(isset($GLOBALS['user'])) {
     $btn = '<a type="button" class="btn btn-default" href="topic/write.php">글쓰기</a>';
 }
+
 $body =<<<JYP
 <div class="container">
     <div class="">
