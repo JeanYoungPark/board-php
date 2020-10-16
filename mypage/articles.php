@@ -45,13 +45,13 @@ while($row = mysqli_fetch_array($result)){
 $body = <<<JYP
 <div class="container clearfix">
     {$menu}
-    <table class="pull-left">
+    <table class="pull-left table">
         <thead>
             <th></th>
             <th>제목</th>
             <th>작성일</th>
         </thead>
-        <tbody>
+        <tbody class="tbody">
             {$list}
         </tbody>
     </table>
