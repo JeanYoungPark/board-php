@@ -43,19 +43,21 @@ while($row = mysqli_fetch_array($result)){
 
 
 $body = <<<JYP
-<div class="container clearfix">
+<div id="mypage" class="container clearfix">
     {$menu}
-    <table class="pull-left table">
-        <thead>
-            <th></th>
-            <th>제목</th>
-            <th>작성일</th>
-        </thead>
-        <tbody class="tbody">
-            {$list}
-        </tbody>
-    </table>
-    <p id="pgNumBtn">{$pg_html}</p>
+    <div class="pull-left lists">
+        <table class="table">
+            <thead>
+                <th></th>
+                <th>제목</th>
+                <th>작성일</th>
+            </thead>
+            <tbody class="tbody">
+                {$list}
+            </tbody>
+        </table>
+        <p id="pgNumBtn">{$pg_html}</p>
+    </div>
 </div>
 JYP;
 

@@ -1,6 +1,6 @@
-.header {padding-bottom:20px;border-bottom:1px solid #ddd;}
+.header {padding:20px 0;border-bottom:1px solid #ddd;}
 
-.container,.form-container {padding-top:20px;}
+.main.container,.form-container, #mypage .lists {padding-top:20px;}
 .content-top {border-bottom:1px solid rgba(0,0,0,.1);}
 .content-top h1 {text-align:center;padding:50px 0;}
 .content-top .date {margin-left:10px;color:#777;}
@@ -9,6 +9,12 @@
 .pages-btn {text-align:center;}
 #editor {min-height:500px;}
 .warn {color:red;}
+
 #pgNumBtn {text-align:center;margin-top:20px;}
 #pgNumBtn .black {cursor:pointer; padding-right:20px;}
 #pgNumBtn .red {font-weight: bold;color:red;padding-right:20px;}
+
+#mypage .menu {width:250px; margin-right:50px;list-style:none;}
+#mypage .menu li {padding:20px 10px 20px;border:1px solid #ddd;border-width: 0 1px 1px 1px;}
+#mypage .menu .on {background:#ddd}
+#mypage .lists {width:840px}

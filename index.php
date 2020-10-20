@@ -44,7 +44,7 @@ if(isset($GLOBALS['user'])) {
 }
 
 $body =<<<JYP
-<div class="container">
+<div class="main container">
     <div class="">
     {$btn}
     <table class="table">
