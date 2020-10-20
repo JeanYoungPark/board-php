@@ -2,13 +2,20 @@
 require_once($_SERVER["DOCUMENT_ROOT"].'/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"].'/class/html.php');
 
-// $_SERVER['PHP_SELF']
+$list = [
+    "articles" => "",
+    "comments" => ""
+];
 
-$menu = <<<JYP
-<ul class="pull-left">
-    <li><a href="">내가 쓴 게시글</a></li>
-    <li><a href="">내가 쓴 댓글</a></li>
-</ul>
+if(preg_match("/\/mypage\/(.*).php/",$_SERVER['PHP_SELF'],$match)) {
+    $list[$match[1]] = "on";
+    $menu = <<<JYP
+        <ul class="menu pull-left">
+            <li class="{$list['articles']}"><a href="/mypage/articles.php">내가 쓴 게시글</a></li>
+            <li class="{$list['comments']}"><a href="/mypage/comments.php">내가 쓴 댓글</a></li>
+        </ul>
 JYP;
+}
+
 
 ?>
