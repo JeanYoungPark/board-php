@@ -4,7 +4,6 @@ require_once($_SERVER["DOCUMENT_ROOT"].'/controller/article.php');
 $article = new article($mysql);
 $content = $article->content($_GET['id']);
 $prevNext = $article->prevNext($content['id'],$content['date']);
-$userBtn = 
 
 $pg_btn = $btn = '';
 if($prevNext['prev']) $pg_btn = "<span class='before'><a href='/topic/article.php?id={$prevNext['prev']['id']}'><em class='glyphicon glyphicon-chevron-left'></em>이전글</a></span>";
